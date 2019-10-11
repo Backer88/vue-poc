@@ -12,7 +12,7 @@
                     aria-label="menu"
                     aria-expanded="false"
                     data-target="navbarBasicExample"
-                    v-on:click="toggleNav"
+                    v-on:click="toggleNav()"
                     v-bind:class="{ 'is-active': isActive }"
                 >
                     <span aria-hidden="true"></span>
@@ -42,17 +42,33 @@
             </div>
         </nav>
         <router-view />
+
+        <footer class="footer is-primary">
+            <div class="container">
+                <div class="columns">
+                    <div class="column">This is some text</div>
+                    <div class="column has-text-right">
+                        <a href="#" class="icon">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="#" class="icon">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </template>
 
 <script>
 export default {
     name: 'App',
-    data: () => {
+    data: function() {
         return { isActive: false }
     },
     methods: {
-        toggleNav: () => {
+        toggleNav: function() {
             this.isActive = !this.isActive
         },
     },
@@ -76,4 +92,14 @@ export default {
         &::hover
             background-color: #F1F1F1
 
+.navbar-burger span
+    background-color: #C1C1C1
+
+footer
+    background-color: $primary !important
+    color: #fff
+
+.icon
+    color: #fff
+    margin-left: 20px
 </style>
